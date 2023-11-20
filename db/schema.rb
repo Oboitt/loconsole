@@ -28,10 +28,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_20_140909) do
   create_table "consoles", force: :cascade do |t|
     t.string "name"
     t.string "brand"
-    t.string "price"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price"
     t.index ["user_id"], name: "index_consoles_on_user_id"
   end
 
