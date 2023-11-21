@@ -27,4 +27,8 @@ class BookingsController < ApplicationController
   def set_console
     @console = Console.find(params[:console_id])
   end
+
+  #def bookings_request
+    #@bookings = current_user.bookings
+  #end
 end

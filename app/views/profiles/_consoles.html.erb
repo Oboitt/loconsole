@@ -1,0 +1,22 @@
+<h1>Your ads</h1>
+<% if @consoles.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Console</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @consoles.each do |console| %>
+        <tr>
+          <td><%= console.console_brand %></td>
+          <td><%= console.console_name %></td>
+          <td><%= console.price %></td>
+          <td><%= console.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>You don't have any ads yet.</p>
+<% end %>
