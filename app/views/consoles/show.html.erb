@@ -1,18 +1,21 @@
+<div class="container">
+
 <h1><%= @console.name %></h1>
   <div>
     <strong>Brand:</strong>
     <%= @console.brand %>
   </div>
   <div>
-    <strong>Release Date:</strong>
-<%#
+    <strong>Price:</strong>
+    <%= @console.price %>
   </div>
-  <div>
-    <strong>Rental Price:</strong>
-    <%= number_to_currency(@console.price) %>
+  <%# <div>
+    <strong>Details:</strong>
+    <%= @console.details %>
+  <%# </div> %>
 
   <%= render 'form_booking', booking: @booking, console: @console %>
 
-  <%= link_to 'Edit', edit_console_path(@console) %> |
+  <%= link_to 'New consol', new_console_path %> |
   <%= link_to 'Back', consoles_path %>
 </div>
