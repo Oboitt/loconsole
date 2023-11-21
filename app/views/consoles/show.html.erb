@@ -1,0 +1,18 @@
+<h1><%= @console.name %></h1>
+  <div>
+    <strong>Brand:</strong>
+    <%= @console.brand %>
+  </div>
+  <div>
+    <strong>Release Date:</strong>
+<%#
+  </div>
+  <div>
+    <strong>Rental Price:</strong>
+    <%= number_to_currency(@console.price) %>
+
+  <%= render 'form_booking', booking: @booking, console: @console %>
+
+  <%= link_to 'Edit', edit_console_path(@console) %> |
+  <%= link_to 'Back', consoles_path %>
+</div>
