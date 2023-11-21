@@ -1,10 +1,14 @@
 class ConsolesController < ApplicationController
   before_action :set_console, only: [:show, :edit, :update, :destroy]
+
+  before_action :authenticate_user!, only: [ :create]
   def index
     @consoles = Console.all
   end
 
   def show
+    @booking = Booking.new
+
   end
 
   def new
@@ -13,6 +17,7 @@ class ConsolesController < ApplicationController
 
   def create
     @console = Console.new(console_params)
+    @console.user = current_user
     if @console.save
       redirect_to console_path(@console)
     else

@@ -7,3 +7,25 @@
     <a class="btn btn-ghost" href="#">Create your account</a>
   </div>
 </div>
+
+
+<div class="container">
+  <div class="cards-console">
+    <% @consoles.each do |console| %>
+    <%= link_to(console_path(console)) do %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.nintendo.se/images/_sections/section_nintendo_switch/inline/01-stationary/img-slider-04-pc_tab.jpg)">
+        <div class="card-trip-info">
+          <div class="card-trip-info-left">
+            <h2><%= console.name %></h2>
+            <p class="location" > <%= console.brand %></p>
+            <p class="price"><%= console.price %>€</p>
+            <%# <img id="avatar-user" src="" alt="user"> %>
+          </div>
+          <div class="card-trip-info-right">
+          </div>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,149 @@
+.cards-console {
+  display: grid;
+  padding: 20px;
+
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+.cards-console a {
+  text-decoration: none;
+}
+
+.card-category {
+  padding: 0 auto;
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin-bottom: 20px;
+  position: relative;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards-console {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .cards-console {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .cards-console {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .cards-console {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .cards-console {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.card-product{
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: white;
+}
+
+.card-product img{
+  height: 180px;
+}
+
+.product-info{
+  padding-left: 20px;
+}
+
+.product-info p {
+  opacity: 0.7;
+}
+
+.card-trip{
+  margin-bottom: 20px;
+  background-color: white;
+  position: relative;
+}
+
+.card-trip img{
+  height: 280px;
+  width: 100%;
+  object-fit: cover;
+
+}
+.card-trip-info{
+  display: flex;
+  justify-content: space-between;
+}
+.card-trip-info-left{
+  padding-left: 20px;
+  align-items: right;
+}
+.card-trip-info-right{
+  align-items: flex-end;
+  margin: 8px;
+}
+
+#avatar-user{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  position: absolute;
+  top: 257px;
+  right: 10px;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+h2 {
+  margin: 10px 0;
+  text-align: center;
+}
+
+.location {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 16px;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.price {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
