@@ -1,0 +1,90 @@
+<div class="container">
+  <h1>DASHBOARD</h1>
+
+  <div class="d-flex justify-content-around">
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#console" aria-expanded="false" aria-controls="console">
+        Mes consoles
+      </button>
+
+      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#bookings" aria-expanded="false" aria-controls="bookings">
+        Mes bookings
+      </button>
+      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#request" aria-expanded="false" aria-controls="request">
+        Mes demandes
+      </button>
+  </div>
+
+  <div class="mt-5">
+    <div class="collapse" id="console">
+      <div class="card card-body">
+       <h1>Your ads</h1>
+        <% if @consoles.any? %>
+          <table>
+            <thead>
+              <tr>
+                <th>Console</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @consoles.each do |console| %>
+                <tr>
+                  <td><%= console.brand %></td>
+                  <td><%= console.name %></td>
+                  <td><%= console.price%>€</td>
+                  <td><%= console.created_at %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          <p>You don't have any ads yet.</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="mt-5">
+
+    <div class="collapse" id="bookings">
+      <div class="card card-body">
+        <h1>Your Rentals</h1>
+        <% if @bookings.any? %>
+          <table>
+            <thead>
+              <tr>
+                <th>Console</th>
+                <th>Start date</th>
+                <th>End date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @bookings.each do |booking| %>
+                <tr>
+                  <td><%= booking.console_brand %></td>
+                  <td><%= booking.console_name %></td>
+                  <td><%= booking.console_price %></td>
+                  <td><%= booking.date_begin %></td>
+                  <td><%= booking.date_end %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          <p>You have no location at the moment.</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="mt-5">
+
+    <div class="collapse" id="request">
+      <div class="card card-body">
+      DEMANDE Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+      </div>
+    </div>
+  </div>
+
+</div>
