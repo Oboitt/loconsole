@@ -25,15 +25,20 @@
                 <th>Consoles</th>
                 <th>Price</th>
                 <th>Date</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
+            <%= link_to "New console", new_console_path, class:"btn btn-light btn-outline-dark rounded-4", type:"button" %>
               <% @consoles.each do |console| %>
                 <tr>
                   <td><%= console.brand %></td>
                   <td><%= console.name %></td>
                   <td><%= console.price%>€</td>
                   <td><%= console.created_at.to_date.strftime('%Y-%m-%d')  %></td>
+                  <td><%= link_to 'Edit consol', edit_console_path(console[:id]), class:"btn btn-light btn-outline-dark rounded-4", type:"button" %>
+                  <%= link_to "Delete", console_path(console),
+                  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-light btn-outline-dark rounded-4", type:"button" %></td>
                 </tr>
               <% end %>
             </tbody>
