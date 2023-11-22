@@ -107,9 +107,10 @@
                 <td><%= booking.console_price %></td>
                 <td><%= booking.date_begin.to_date.strftime('%Y-%m-%d') %></td>
                 <td><%= booking.date_end.to_date.strftime('%Y-%m-%d') %></td>
+
                 <td>
-                  <%= button_to "To validate", validate_booking_path(booking), method: :post, class: "btn btn-success" %>
-                  <%= button_to "Refuse", refuse_booking_path(booking), method: :post, class: "btn btn-danger" %>
+                  <%# <%= button_to "To validate", validate_booking_path(booking), method: :post, class: "btn btn-success" %>
+                  <%# <%= button_to "Refuse", refuse_booking_path(booking), method: :post, class: "btn btn-danger" %>
                 </td>
               </tr>
             <% end %>

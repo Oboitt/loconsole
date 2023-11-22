@@ -1,14 +1,23 @@
 <div class="container">
-
-<h1><%= @console.name %></h1>
-  <div>
-    <strong>Brand:</strong>
-    <%= @console.brand %>
+  <div data-controller="toggle" class="gap d-flex justify-content-center mt-5">
+    <div class="card-trip" data-action="click->toggle#fire">
+      <%= image_tag "photo manette.jpg", alt: "Photo-manette" %>
+      <div class="card-trip-infos">
+        <div>
+          <h2><%= @console.name %></h2>
+          <h3><%= @console.brand %></h3>
+        </div>
+        <h2 class="card-trip-pricing"><%= @console.price %> € </h2>
+      </div>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
+          Fugiat similique, consectetur aliquam beatae dolorum esse</p>
+    </div>
+    <div data-toggle-target="togglableElement" class="d-none bg-white p-5">
+      <%= render 'bookings/form_booking', booking: @booking, console: @console %>
+    </div>
   </div>
-  <div>
-    <strong>Price:</strong>
-    <%= @console.price %>
-  </div>
+  <%= link_to "Back to the consoles", consoles_path, class: "btn btn-ghost" %>
+</div>
   <%# <div>
     <strong>Details:</strong>
     <%= @console.details %>
@@ -17,11 +26,10 @@
     <%= cl_image_tag("THE_IMAGE_ID_FROM_LIBRARY",
       width: 400, height: 300, crop: :fill) %>
   <%# </div> %>
-  <%= render 'form_booking', booking: @booking, console: @console %>
 
-  <%= link_to 'New consol', new_console_path %>
-  <%= link_to 'Edit consol', edit_console_path(@console) %>
-  <%= link_to 'Back', consoles_path %>
-  <%= link_to "Delete", console_path(@console),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-</div>
+
+  <%# <%= link_to 'New consol', new_console_path %>
+  <%# <%= link_to 'Edit consol', edit_console_path(@console) %>
+
+  <%# <%= link_to "Delete", console_path(@console), %>
+  <%# data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  %>

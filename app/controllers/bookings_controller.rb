@@ -15,7 +15,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to console_path(@console)
     else
-      render :new, status: :unprocessable_entity
+      render "consoles/show", status: :unprocessable_entity
     end
   end
 
