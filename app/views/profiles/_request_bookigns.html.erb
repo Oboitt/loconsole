@@ -1,0 +1,30 @@
+<h1>Reservation request</h1>
+<% if @request_bookings.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Console</th>
+        <th>Start date</th>
+        <th>End date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @request_bookings.each do |booking| %>
+        <tr>
+          <td><%= booking.console_brand %></td>
+          <td><%= booking.console_name %></td>
+          <td><%= booking.console_price %></td>
+          <td><%= booking.date_begin %></td>
+          <td><%= booking.date_end %></td>
+          <td>
+            <%= button_to "To validate", validate_booking_path(booking), method: :post, class: "btn btn-success" %>
+            <%= button_to "Refuse", refuse_booking_path(booking), method: :post, class: "btn btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>You have no reservation requests at the moment.</p>
+<% end %>

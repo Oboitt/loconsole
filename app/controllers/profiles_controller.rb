@@ -4,6 +4,6 @@ class ProfilesController < ApplicationController
   def dashboard
     @consoles = current_user.consoles
     @bookings = current_user.bookings
-    @bookings_requests = current_user.booking_requests
+    @request_bookings = current_user.bookings_as_owner
   end
 end
