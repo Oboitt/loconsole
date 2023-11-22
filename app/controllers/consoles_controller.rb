@@ -1,7 +1,7 @@
 class ConsolesController < ApplicationController
   before_action :set_console, only: [:show, :edit, :update, :destroy]
 
-  before_action :authenticate_user!, only: [ :create]
+  before_action :authenticate_user!, only: [ :create, :update, :destroy]
   def index
     @consoles = Console.all
   end
