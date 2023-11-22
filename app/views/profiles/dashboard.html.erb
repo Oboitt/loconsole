@@ -107,9 +107,9 @@
           <tbody>
             <% @request_bookings.each do |booking| %>
               <tr>
-                <td><%= booking.console_brand %></td>
-                <td><%= booking.console_name %></td>
-                <td><%= booking.console_price %></td>
+                <td><%= booking.console.brand %></td>
+                <td><%= booking.console.name %></td>
+                <td><%= booking.console.price %></td>
                 <td><%= booking.date_begin.to_date.strftime('%Y-%m-%d') %></td>
                 <td><%= booking.date_end.to_date.strftime('%Y-%m-%d') %></td>
 
