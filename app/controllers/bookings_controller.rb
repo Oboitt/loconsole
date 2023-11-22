@@ -18,6 +18,7 @@ class BookingsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
   private
 
   def booking_params
@@ -27,8 +28,4 @@ class BookingsController < ApplicationController
   def set_console
     @console = Console.find(params[:console_id])
   end
-
-  #def bookings_request
-    #@bookings = current_user.bookings
-  #end
 end
