@@ -10,16 +10,16 @@
   object-fit: cover;
 }
 
-.card-trip h2 {
+.card-trip h3 {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
 }
 
 .card-trip p {
-  font-size: 12px;
+  font-size: 16px;
   opacity: .7;
-  margin: 0;
+  margin: 16px;
 }
 
 
@@ -29,7 +29,6 @@
   justify-content: space-between;
   align-items: flex-start;
   position: relative;
-  height: 200px;
 }
 
 .card-trip-infos .card-trip-user {

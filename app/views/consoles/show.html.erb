@@ -1,17 +1,19 @@
 <div class="container">
-  <div data-controller="toggle" class="d-flex justify-content-center mt-5">
+  <div data-controller="toggle" class="gap d-flex justify-content-center mt-5">
     <div class="card-trip" data-action="click->toggle#fire">
       <%= image_tag "photo manette.jpg", alt: "Photo-manette" %>
       <div class="card-trip-infos">
         <div>
           <h2><%= @console.name %></h2>
-          <p><%= @console.brand %></p>
+          <h3><%= @console.brand %></h3>
         </div>
         <h2 class="card-trip-pricing"><%= @console.price %> € </h2>
       </div>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
+          Fugiat similique, consectetur aliquam beatae dolorum esse</p>
     </div>
-    <div data-toggle-target="togglableElement" class="d-none">
-      <%= render 'form_booking', booking: @booking, console: @console %>
+    <div data-toggle-target="togglableElement" class="d-none bg-white p-5">
+      <%= render 'bookings/form_booking', booking: @booking, console: @console %>
     </div>
   </div>
   <%= link_to "Back to the consoles", consoles_path, class: "btn btn-ghost" %>
