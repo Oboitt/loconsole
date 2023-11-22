@@ -2,26 +2,29 @@
   <h1>DASHBOARD</h1>
 
   <div class="d-flex justify-content-around">
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#console" aria-expanded="false" aria-controls="console">
-        Mes consoles
+    <button class="btn btn-light btn-outline-dark rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#console" aria-expanded="false" aria-controls="console">
+        My consoles
       </button>
-      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#bookings" aria-expanded="false" aria-controls="bookings">
-        Mes bookings
+      <button class="btn btn-light btn-outline-dark rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#bookings" aria-expanded="false" aria-controls="bookings">
+        My bookings
       </button>
-      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#request" aria-expanded="false" aria-controls="request">
-        Mes demandes
+      <button class="btn btn-light btn-outline-dark rounded-4"  type="button" data-bs-toggle="collapse" data-bs-target="#request" aria-expanded="false" aria-controls="request">
+        My requests
       </button>
   </div>
 
   <div class="mt-5">
     <div class="collapse" id="console">
-      <div class="card card-body">
-       <h1>Your ads</h1>
+      <div class="card card-body bg-white rounded-4">
+       <h1>Your consoles</h1>
         <% if @consoles.any? %>
           <table>
             <thead>
               <tr>
-                <th>Console</th>
+                <th>Brand</th>
+                <th>Consoles</th>
+                <th>Price</th>
+                <th>Date</th>
               </tr>
             </thead>
             <tbody>
@@ -30,7 +33,7 @@
                   <td><%= console.brand %></td>
                   <td><%= console.name %></td>
                   <td><%= console.price%>€</td>
-                  <td><%= console.created_at %></td>
+                  <td><%= console.created_at.to_date.strftime('%Y-%m-%d')  %></td>
                 </tr>
               <% end %>
             </tbody>
@@ -46,13 +49,15 @@
   <div class="mt-5">
 
     <div class="collapse" id="bookings">
-      <div class="card card-body">
-        <h1>Your Rentals</h1>
+      <div class="card card-body bg-white rounded-4">
+        <h1>Your rentals</h1>
         <% if @bookings.any? %>
           <table>
             <thead>
               <tr>
-                <th>Console</th>
+                <th>Brand</th>
+                <th>Consoles</th>
+                <th>Price</th>
                 <th>Start date</th>
                 <th>End date</th>
               </tr>
@@ -60,11 +65,11 @@
             <tbody>
               <% @bookings.each do |booking| %>
                 <tr>
-                  <td><%= booking.console_brand %></td>
-                  <td><%= booking.console_name %></td>
-                  <td><%= booking.console_price %></td>
-                  <td><%= booking.date_begin %></td>
-                  <td><%= booking.date_end %></td>
+                  <td><%= booking.console.brand %></td>
+                  <td><%= booking.console.name %></td>
+                  <td><%= booking.console.price %></td>
+                  <td><%= booking.date_begin.to_date.strftime('%Y-%m-%d') %></td>
+                  <td><%= booking.date_end.to_date.strftime('%Y-%m-%d') %></td>
                 </tr>
               <% end %>
             </tbody>
@@ -80,13 +85,15 @@
   <div class="mt-5">
 
     <div class="collapse" id="request">
-      <div class="card card-body">
+      <div class="card card-body bg-white rounded-4">
      <h1>Reservation request</h1>
       <% if @request_bookings.any? %>
         <table>
           <thead>
             <tr>
-              <th>Console</th>
+              <th>Brand</th>
+              <th>Consoles</th>
+              <th>Price</th>
               <th>Start date</th>
               <th>End date</th>
               <th>Actions</th>
@@ -98,8 +105,8 @@
                 <td><%= booking.console_brand %></td>
                 <td><%= booking.console_name %></td>
                 <td><%= booking.console_price %></td>
-                <td><%= booking.date_begin %></td>
-                <td><%= booking.date_end %></td>
+                <td><%= booking.date_begin.to_date.strftime('%Y-%m-%d') %></td>
+                <td><%= booking.date_end.to_date.strftime('%Y-%m-%d') %></td>
                 <td>
                   <%= button_to "To validate", validate_booking_path(booking), method: :post, class: "btn btn-success" %>
                   <%= button_to "Refuse", refuse_booking_path(booking), method: :post, class: "btn btn-danger" %>
