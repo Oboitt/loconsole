@@ -17,6 +17,8 @@ class ConsolesController < ApplicationController
 
   def show
     @booking = Booking.new
+    @review = Review.new
+
   end
 
   def new

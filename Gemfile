@@ -1,5 +1,6 @@
 source "https://rubygems.org"
-
+gem "dotenv-rails"
+gem "cloudinary"
 ruby "3.1.2"
 gem "devise"
 gem "geocoder"

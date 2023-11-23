@@ -15,8 +15,30 @@
     <div data-toggle-target="togglableElement" class="d-none bg-white p-5">
       <%= render 'bookings/form_booking', booking: @booking, console: @console %>
     </div>
+    <div class="review">
+      <h2 data-controller="toggle" data-action="click->toggle#fire">Laissez une évaluation</h2>
+      <div data-toggle-target="togglableElement" class="">
+
+
+
+
+<%= simple_form_for [@console, @review] do |f| %>
+  <%= f.input :comment %>
+  <%= f.input :rating, include_blank: false %>
+  <%= f.submit class: "btn btn-ghost", value: "Valider" %>
+<% end %>
+
+
+
+
+
+
+
+        <%#= render 'reviews/form_review', review: @review, booking: @booking %>
+      </div>
+    </div>
   </div>
-  <%= link_to "Back to the consoles", consoles_path, class: "btn btn-ghost" %>
+  <%= link_to "Back to the consoles", consoles_path, class: "btn btn-light btn-outline-dark rounded-4" %>
 </div>
   <%# <div>
     <strong>Details:</strong>
