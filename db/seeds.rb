@@ -20,17 +20,17 @@ thomas = User.create!(password: "111111", email: "thomas@gmail.com")
 
 puts 'Creating consoles...'
 
-ps5 = Console.create!(name: "PS5", brand: "PlayStation", user: guillaume, price: "50€")
+ps5 = Console.create!(name: "PS5", brand: "PlayStation", user: guillaume, price: "50€", address: "31 chemin de planche au riez, 59290 Wasquehal")
 
-xbox_serie_x = Console.create!(name: "Xbox Serie x", brand: "Microsoft", user: thomas, price: "50€")
+xbox_serie_x = Console.create!(name: "Xbox Serie x", brand: "Microsoft", user: thomas, price: "50€", address: "139 boulevard de la liberté, 59000 Lille")
 
-switch = Console.create!(name: "Switch", brand: "Nintendo", user: oscar, price: "50€")
+switch = Console.create!(name: "Switch", brand: "Nintendo", user: oscar, price: "50€", address: "19 rue de la barre, 59000 Lille")
 
-saturn = Console.create!(name: "Saturn", brand: "SEGA", user: thomas, price: "25€")
+saturn = Console.create!(name: "Saturn", brand: "SEGA", user: thomas, price: "25€", address: "139 boulevard de la liberté, 59000 Lille")
 
-wii = Console.create!(name: "Wii", brand: "Nintendo", user: oscar, price: "25€")
+wii = Console.create!(name: "Wii", brand: "Nintendo", user: oscar, price: "25€", address: "19 rue de la barre, 59000 Lille")
 
-mega_drive = Console.create!(name: "Mega drive", brand: "SEGA", user: guillaume, price: "25€")
+mega_drive = Console.create!(name: "Mega drive", brand: "SEGA", user: guillaume, price: "25€", address: "31 chemin de planche au riez, 59290 Wasquehal")
 
-gameboy = Console.create!(name: "GameBoy", brand: "Nintendo", user: oscar, price: "25€")
+gameboy = Console.create!(name: "GameBoy", brand: "Nintendo", user: oscar, price: "25€", address: "19 rue de la barre, 59000 Lille")
 puts 'Finished!'
