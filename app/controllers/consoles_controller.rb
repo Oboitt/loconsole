@@ -4,11 +4,21 @@ class ConsolesController < ApplicationController
   before_action :authenticate_user!, only: [ :create, :update, :destroy]
   def index
     @consoles = Console.all
+    @markers = @consoles.geocoded.map do |console|
+      {
+        lat: console.latitude,
+        lng: console.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {console: console}),
+        marker_html: render_to_string(partial: "marker", locals: {console: console})
+      }
+
+    end
   end
 
   def show
     @booking = Booking.new
     @review = Review.new
+
   end
 
   def new

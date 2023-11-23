@@ -73,6 +73,19 @@ simon = User.create!(password: "111111", email: "simon@gmail.com")
 pierre = User.create!(password: "111111", email: "pierre@gmail.com")
 puts 'Creating consoles...'
 
+# ps5 = Console.create!(name: "PS5", brand: "PlayStation", user: guillaume, price: "50€", address: "31 chemin de planche au riez, 59290 Wasquehal")
+
+#xbox_serie_x = Console.create!(name: "Xbox Serie x", brand: "Microsoft", user: thomas, price: "50€", address: "139 boulevard de la liberté, 59000 Lille")
+
+#switch = Console.create!(name: "Switch", brand: "Nintendo", user: oscar, price: "50€", address: "19 rue de la barre, 59000 Lille")
+
+#saturn = Console.create!(name: "Saturn", brand: "SEGA", user: thomas, price: "25€", address: "139 boulevard de la liberté, 59000 Lille")
+
+#wii = Console.create!(name: "Wii", brand: "Nintendo", user: oscar, price: "25€", address: "19 rue de la barre, 59000 Lille")
+
+#mega_drive = Console.create!(name: "Mega drive", brand: "SEGA", user: guillaume, price: "25€", address: "31 chemin de planche au riez, 59290 Wasquehal")
+
+#gameboy = Console.create!(name: "GameBoy", brand: "Nintendo", user: oscar, price: "25€", address: "19 rue de la barre, 59000 Lille")
 
 image = URI.open("https://theglobalcoverage.com/wp-content/uploads/2020/08/ishMfuW.jpeg")
 ps5 = Console.create(name: "PS5", brand: "PlayStation", user: simon, price: "5€")
@@ -198,4 +211,5 @@ review2 = Review.create!(user: thomas, console: switch, rating: 4, comment: "Con
 # review3 = Review.create!(booking: booking3, rating: 3, content: "Console en bon état, je recommande !")
 # review4 = Review.create!(booking: booking4, rating: 2, content: "Console en bon état, je recommande !")
 # review5 = Review.create!(booking: booking5, rating: 1, content: "Console en bon état, je recommande !")
+
 puts 'Finished!'
