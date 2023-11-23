@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+gem "dotenv-rails"
 
 ruby "3.1.2"
 gem "devise"
