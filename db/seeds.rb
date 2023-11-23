@@ -9,7 +9,6 @@
 #   end
 
 require "open-uri"
-=======
 Review.destroy_all
 
 Booking.destroy_all
@@ -200,4 +199,3 @@ review2 = Review.create!(booking: booking2, rating: 4, comment: "Console en bon 
 # review4 = Review.create!(booking: booking4, rating: 2, content: "Console en bon état, je recommande !")
 # review5 = Review.create!(booking: booking5, rating: 1, content: "Console en bon état, je recommande !")
 puts 'Finished!'
-
