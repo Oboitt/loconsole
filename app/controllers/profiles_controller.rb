@@ -5,5 +5,6 @@ class ProfilesController < ApplicationController
     @consoles = current_user.consoles
     @bookings = current_user.bookings
     @request_bookings = current_user.bookings_as_owner
+
   end
 end
