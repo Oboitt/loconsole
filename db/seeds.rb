@@ -7,7 +7,11 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
 require "open-uri"
+=======
+Review.destroy_all
+
 Booking.destroy_all
 Console.destroy_all
 User.destroy_all
@@ -70,13 +74,16 @@ simon = User.create!(password: "111111", email: "simon@gmail.com")
 pierre = User.create!(password: "111111", email: "pierre@gmail.com")
 puts 'Creating consoles...'
 
+
 image = URI.open("/home/cybertake/code/oscar/loconsole/app/assets/images/ps5.jpg")
 ps5 = Console.create(name: "PS5", brand: "PlayStation", user: simon, price: "50€")
 ps5.photo.attach(io: image, filename: "ps5.jpg", content_type: "image/jpg")
 
+
 image = URI.open("/home/cybertake/code/oscar/loconsole/app/assets/images/ps4.jpg")
 ps4 = Console.create(name: "PS4", brand: "PlayStation", user: yves, price: "40€")
 ps4.photo.attach(io: image, filename: "ps4.jpg", content_type: "image/jpg")
+
 
 image = URI.open("/home/cybertake/code/oscar/loconsole/app/assets/images/ps3.jpg")
 ps3 = Console.create(name: "PS3", brand: "PlayStation", user: dimitri, price: "30€")
@@ -177,3 +184,20 @@ atari_2600.photo.attach(io: image, filename: "atari_2600.jpg", content_type: "im
 image = URI.open("/home/cybertake/code/oscar/loconsole/app/assets/images/steam_desk.jpg")
 steam_desk = Console.create(name: "Steam Desk", brand: "Steam", user: noemie, price: "50€")
 steam_desk.photo.attach(io: image, filename: "steam_desk.jpg", content_type: "image/jpg")
+
+puts 'Creating bookings...'
+
+booking1 = Booking.create!(user: thomas, console: ps5, date_begin: Date.today + 3, date_end: Date.today + 4)
+booking2 = Booking.create!(user: thomas, console: ps5, date_begin: Date.today + 5, date_end: Date.today + 10)
+# booking3 = Booking.create!(user: oscar, console: switch, date_begin: Date.today, end_date: Date.today + 1)
+# booking4 = Booking.create!(user: guillaume, console: saturn, date_begin: Date.today + 10, end_date: Date.today + 20)
+# booking5 = Booking.create!(user: thomas, console: wii, date_begin: Date.today + 30, end_date: Date.today + 34)
+
+puts 'Creating reviews...'
+review1 = Review.create!(booking: booking1, rating: 5, comment: "Super console, je recommande !")
+review2 = Review.create!(booking: booking2, rating: 4, comment: "Console en bon état, je recommande !")
+# review3 = Review.create!(booking: booking3, rating: 3, content: "Console en bon état, je recommande !")
+# review4 = Review.create!(booking: booking4, rating: 2, content: "Console en bon état, je recommande !")
+# review5 = Review.create!(booking: booking5, rating: 1, content: "Console en bon état, je recommande !")
+puts 'Finished!'
+

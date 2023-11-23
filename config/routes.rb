@@ -14,9 +14,9 @@ Rails.application.routes.draw do
 
   resources :consoles do
     resources :bookings, only: [:new, :create]
+    resources :reviews, only: :create
   end
-
+  resources :reviews, only: :destroy
   get "dashboard", to: "profiles#dashboard"
-
   # ressources :bookings, only: [:update]
 end

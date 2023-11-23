@@ -11,12 +11,15 @@
       <button class="btn btn-light btn-outline-dark rounded-4"  type="button" data-bs-toggle="collapse" data-bs-target="#request" aria-expanded="false" aria-controls="request">
         My requests
       </button>
+      <button class="btn btn-light btn-outline-dark rounded-4"  type="button" data-bs-toggle="collapse" data-bs-target="#review" aria-expanded="false" aria-controls="review">
+        My reviews
+      </button>
   </div>
 
   <div class="mt-5">
     <div class="collapse" id="console">
       <div class="card card-body bg-white rounded-4">
-       <h1>Your consoles</h1>
+       <h1>My consoles</h1>
         <% if @consoles.any? %>
           <table>
             <thead>
@@ -55,7 +58,7 @@
 
     <div class="collapse" id="bookings">
       <div class="card card-body bg-white rounded-4">
-        <h1>Your rentals</h1>
+        <h1>My bookings</h1>
         <% if @bookings.any? %>
           <table>
             <thead>
@@ -91,7 +94,7 @@
 
     <div class="collapse" id="request">
       <div class="card card-body bg-white rounded-4">
-     <h1>Reservation request</h1>
+     <h1>My requests</h1>
       <% if @request_bookings.any? %>
         <table>
           <thead>
@@ -112,7 +115,6 @@
                 <td><%= booking.console.price %></td>
                 <td><%= booking.date_begin.to_date.strftime('%Y-%m-%d') %></td>
                 <td><%= booking.date_end.to_date.strftime('%Y-%m-%d') %></td>
-
                 <td>
                   <%# <%= button_to "To validate", validate_booking_path(booking), method: :post, class: "btn btn-success" %>
                   <%# <%= button_to "Refuse", refuse_booking_path(booking), method: :post, class: "btn btn-danger" %>
@@ -128,4 +130,41 @@
     </div>
   </div>
 
+
+  <div class="mt-5">
+
+    <div class="collapse" id="review">
+      <div class="card card-body bg-white rounded-4">
+        <h1>My reviews</h1>
+        <% if @request_bookings.any? %>
+          <table>
+            <thead>
+              <tr>
+                <th>Rating</th>
+                <th>When review</th>
+                <th>comment</th>
+              </tr>
+            </thead>
+            <tbody>
+            <% @request_bookings.each do |booking| %>
+              <% booking.reviews.each do |review| %>
+                <tr>
+                  <td>
+                    <% review.rating.times do %>
+                      <i class="fas fa-star star-yellow"></i>
+                    <% end %>
+                  </td>
+                  <td><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></td>
+                  <td><%= review.comment %></td>
+                </tr>
+              <% end %>
+            <% end %>
+            </tbody>
+          </table>
+        <% else %>
+        <p>You have no review at the moment.</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
