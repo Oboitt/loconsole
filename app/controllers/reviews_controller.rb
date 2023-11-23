@@ -3,10 +3,11 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @booking = Booking.find(params[:booking_id])
-    @review.booking_id = @booking
+    @console = Console.find(params[:console_id])
+    @review.console_id = @console.id
+    @review.user = current_user
     if @review.save
-      redirect_to dashboard_path(@booking)
+      redirect_to console_path(@console)
     else
       render 'new', status: :unprocessable_entity
     end

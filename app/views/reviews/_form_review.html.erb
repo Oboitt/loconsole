@@ -1,0 +1,5 @@
+<%= simple_form_for [@booking, review] do |f| %>
+  <%= f.input :comment %>
+  <%= f.input :rating, include_blank: false %>
+  <%= f.submit class: "btn btn-ghost", value: "Valider" %>
+<% end %>

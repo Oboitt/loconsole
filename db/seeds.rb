@@ -44,8 +44,8 @@ booking2 = Booking.create!(user: thomas, console: ps5, date_begin: Date.today + 
 # booking5 = Booking.create!(user: thomas, console: wii, date_begin: Date.today + 30, end_date: Date.today + 34)
 
 puts 'Creating reviews...'
-review1 = Review.create!(booking: booking1, rating: 5, comment: "Super console, je recommande !")
-review2 = Review.create!(booking: booking2, rating: 4, comment: "Console en bon état, je recommande !")
+review1 = Review.create!(user: thomas, console: ps5, rating: 5, comment: "Super console, je recommande !")
+review2 = Review.create!(user: thomas, console: switch, rating: 4, comment: "Console en bon état, je recommande !")
 # review3 = Review.create!(booking: booking3, rating: 3, content: "Console en bon état, je recommande !")
 # review4 = Review.create!(booking: booking4, rating: 2, content: "Console en bon état, je recommande !")
 # review5 = Review.create!(booking: booking5, rating: 1, content: "Console en bon état, je recommande !")

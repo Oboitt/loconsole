@@ -72,6 +72,7 @@
             </thead>
             <tbody>
               <% @bookings.each do |booking| %>
+              <% @review = Review.new %>
                 <tr>
                   <td><%= booking.console.brand %></td>
                   <td><%= booking.console.name %></td>
@@ -136,7 +137,8 @@
     <div class="collapse" id="review">
       <div class="card card-body bg-white rounded-4">
         <h1>My reviews</h1>
-        <% if @request_bookings.any? %>
+    <% @consoles.each do |console| %>
+     <% if console.reviews.any? %>
           <table>
             <thead>
               <tr>
@@ -146,8 +148,7 @@
               </tr>
             </thead>
             <tbody>
-            <% @request_bookings.each do |booking| %>
-              <% booking.reviews.each do |review| %>
+            <% console.reviews.each do |review| %>
                 <tr>
                   <td>
                     <% review.rating.times do %>
@@ -157,7 +158,6 @@
                   <td><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></td>
                   <td><%= review.comment %></td>
                 </tr>
-              <% end %>
             <% end %>
             </tbody>
           </table>
@@ -165,6 +165,7 @@
         <p>You have no review at the moment.</p>
         <% end %>
       </div>
+    <% end %>
     </div>
   </div>
 </div>
