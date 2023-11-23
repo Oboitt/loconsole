@@ -5,4 +5,5 @@ class Console < ApplicationRecord
   validates :name, presence: true
   validates :price, presence: true
   validates :brand, presence: true
+  has_one_attached :photo
 end
