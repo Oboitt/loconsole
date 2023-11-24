@@ -73,141 +73,61 @@ simon = User.create!(password: "111111", email: "simon@gmail.com")
 pierre = User.create!(password: "111111", email: "pierre@gmail.com")
 puts 'Creating consoles...'
 
-ps5 = Console.create!(name: "PS5", brand: "PlayStation", user: simon, price: "5€", address: "31 chemin de planche au riez, 59290 Wasquehal")
-image = URI.open("https://theglobalcoverage.com/wp-content/uploads/2020/08/ishMfuW.jpeg")
-ps5.photo.attach(io: image, filename: "ps5.jpg", content_type: "image/jpg")
-#xbox_serie_x = Console.create!(name: "Xbox Serie x", brand: "Microsoft", user: thomas, price: "50€", address: "139 boulevard de la liberté, 59000 Lille")
 
-switch = Console.create!(name: "Switch", brand: "Nintendo", user: oscar, price: "5€", address: "19 rue de la barre, 59000 Lille")
-image = URI.open("https://i.computer-bild.de/imgs/1/3/9/0/9/0/7/7/switcholed-6e57ff4748a1a42d.jpg")
-switch.photo.attach(io: image, filename: "nintendo_switch.jpg", content_type: "image/jpg")
-#saturn = Console.create!(name: "Saturn", brand: "SEGA", user: thomas, price: "25€", address: "139 boulevard de la liberté, 59000 Lille")
+console_data = [
+  { name: "PS5", brand: "PlayStation", user: yves, price: "4€", adress:"19 rue de la barre 59800 Lille", image: "https://assets-prd.ignimgs.com/2020/06/12/playstation-5-button-02-1591933908407.jpg" },
+  { name: "PS4", brand: "PlayStation", user: yves, price: "4€", adress:"Place de Saintignon, 165 Av. de Bretagne, 59000 Lille", image: "https://static-ssl.businessinsider.com/image/568c0d79dd0895eb398b47df-5850-2880/ps4.jpg" },
+  { name: "PS3", brand: "PlayStation", user: dimitri, price: "3€", adress:"108 Rue Turgot, 59000 Lille", image: "http://www.tunisianet.com.tn/img/p/1/7/2/4/4/17244.jpg" },
+  { name: "PS2", brand: "PlayStation", user: sasha, price: "2€", adress:"Pl. de la Gare, 59110 La Madeleine", image: "http://www.sat-elitegames.com/wp-content/uploads/2014/05/PS2.jpg" },
+  { name: "PS1", brand: "PlayStation", user: rose, price: "1€", adress:"112 Rue Sadi Carnot, 59280 Armentières", image: "https://assets.vg247.com/current/2015/09/playstation_one_original.jpg" },
+  { name: "PSP", brand: "PlayStation", user: josé, price: "2€", adress:"19 rue de la république 59184 Sainghin-en-Weppes", image: "http://upload.wikimedia.org/wikipedia/commons/3/3d/PSP-2000.jpg" },
+  { name: "PS Vita", brand: "PlayStation", user: mickael, price: "2€", adress:"Rue du 11 Novembre, 62138 Violaines", image: "https://www.gameconsoledojo.com/wp-content/uploads/2018/03/1920px-PlayStation-Vita-1101-FL.jpg" },
+  { name: "Xbox Series X", brand: "Microsoft", user: thomas, price: "5€", adress:"99 Rue Paul Bert, 62300 Lens", image: "https://cdn1.smartprix.com/rx-iakBq55Vm-w1200-h1200/microsoft-xbox-serie.jpg" },
+  { name: "Xbox", brand: "Microsoft", user: eve, price: "5€", adress:"630 Av. Jules César Zone Actiparc, 62223 Saint-Laurent-Blangy", image: "https://pngimg.com/uploads/xbox/xbox_PNG17520.png" },
+  { name: "Xbox 360", brand: "Microsoft", user: adam, price: "5€", adress:"42 rue de Wambrechies 59520 Marquette-lez-Lille", image: "https://upload.wikimedia.org/wikipedia/commons/3/37/Xbox-360-Elite-wController.jpg" },
+  { name: "Xbox One", brand: "Microsoft", user: peter, price: "5€", adress:"31 chemin de la planche au riez, 59290 Wasquehal", image: "https://i5.walmartimages.com/asr/8f270281-dddd-41be-915d-6ab728e6bd9c_1.108ebc39646ceee098ee90a8edb33042.jpeg" },
+  { name: "Wii U", brand: "Nintendo", user: quentin, price: "5€", adress:"3 rue de canteleu 59000 Lille", image: "https://wallup.net/wp-content/uploads/2019/09/392799-wii-u-nintendo-system-videogame-video-game-wii.jpg" },
+  { name: "Gameboy", brand: "Nintendo", user: ruan, price: "5€", adress:"1 Rue du Château d'Isenghien, 59160 Lille", image: "https://images.launchbox-app.com/Platforms/6df33ae4-8087-4db1-9f7b-965ddcba11de.png" },
+  { name: "Gameboy Color", brand: "Nintendo", user: ivan, price: "5€", adress:"60 Bd Vauban, 59800 Lille", image: "https://images-na.ssl-images-amazon.com/images/I/61vi4-7L0qL._AC_SL1500_.jpg" },
+  { name: "Gameboy Advance", brand: "Nintendo", user: max, price: "5€", adress:"4 Avenue Frizac 31400 Toulouse", image: "https://www.fun-academy.fr/wp-content/uploads/2021/03/129756_5a223bb9-37ca-49d6-86ac-82f25e444776.jpg" },
+  { name: "Gameboy Advance SP", brand: "Nintendo", user: brice, price: "5€", adress:"5 Rue Curial, 75019 Paris", image: "http://upload.wikimedia.org/wikipedia/commons/2/2d/Gameboy-Advance-SP-Mk2.jpg" },
+  { name: "Gamecube", brand: "Nintendo", user: victor, price: "5€", adress:"Pl. Amélie Raba Léon, 33000 Bordeaux", image: "https://www.mariowiki.com/images/thumb/8/80/Nintendo_GameCube_console.png/1200px-Nintendo_GameCube_console.png" },
+  { name: "Super Nintendo", brand: "Nintendo", user: jordan, price: "5€", adress:"130 Bd des Talards, 35400 Saint-Malo", image: "http://www.classicgaming.biz/wp-content/uploads/2017/07/SNES-Big.png" },
+  { name: "Nintendo DS", brand: "Nintendo", user: laura, price: "5€", adress:"Boulevard Rousseau, Aéroport de Dinard - Bt 20, 35801 Dinard", image: "http://upload.wikimedia.org/wikipedia/commons/5/56/Nintendo-DS-Lite-Black-Open.png" },
+  { name: "Nintendo 64", brand: "Nintendo", user: bruno, price: "5€", adress:"2 All. Louise Michel, 29000 Quimper", image: "http://upload.wikimedia.org/wikipedia/commons/0/02/N64-Console-Set.png" },
+  { name: "Saturn", brand: "SEGA", user: pierre, price: "5€", adress:"3 Rue Vannetaise, 44350 Guérande", image: "http://oyster.ignimgs.com/mediawiki/apis.ign.com/history-of-video-game-consoles/5/58/Sega-saturn-console.jpg" },
+  { name: "Mega Drive", brand: "SEGA", user: jessica, price: "5€", adress:"All. des Marronniers, 46800 Montcuq-en-Quercy-Blanc", image: "https://asset.conrad.com/media10/isa/160267/c1/-/en/1602624_RB_00_FB/image.jpg" },
+  { name: "Master System", brand: "SEGA", user: jennifer, price: "5€", adress:"Rue de l'Oradou 300, 63000 Clermont-Ferrand", image: "https://segaretro.org/images/0/0f/MasterSystem1.jpg" },
+  { name: "Atari 2600", brand: "Atari", user: nicolas, price: "5€", adress:"279 Av. de La Châtre, 36000 Châteauroux", image: "http://upload.wikimedia.org/wikipedia/commons/d/de/Atari-2600-Console.jpg" },
+  { name: "Steam Desk", brand: "Steam", user: noemie, price: "5€", adress:"76 Rue Marius Berliet, 69000 Lyon", image: "https://knowthisapp.com/wp-content/uploads/2021/08/everything-you-need-to-know-about-steam-deck.jpg" },
+  { name: "Wii", brand: "Nintendo", user: oscar, price: "5€", adress:"17 bis Rue de la Gare, 74000 Annecy", image: "http://upload.wikimedia.org/wikipedia/commons/1/14/Wii-console.jpg" }
+]
 
-#wii = Console.create!(name: "Wii", brand: "Nintendo", user: oscar, price: "25€", address: "19 rue de la barre, 59000 Lille")
-
-#mega_drive = Console.create!(name: "Mega drive", brand: "SEGA", user: guillaume, price: "25€", address: "31 chemin de planche au riez, 59290 Wasquehal")
-
-#gameboy = Console.create!(name: "GameBoy", brand: "Nintendo", user: oscar, price: "25€", address: "19 rue de la barre, 59000 Lille")
-
-
-
-
-# image = URI.open("ps4.jpg")
-# ps4 = Console.create(name: "PS4", brand: "PlayStation", user: yves, price: "4€")
-# ps4.photo.attach(io: image, filename: "ps4.jpg", content_type: "image/jpg")
-
-
-# image = URI.open("ps3.jpg")
-# ps3 = Console.create(name: "PS3", brand: "PlayStation", user: dimitri, price: "3€")
-# ps3.photo.attach(io: image, filename: "ps3.jpg", content_type: "image/jpg")
-
-# image = URI.open("ps2.jpg")
-# ps2 = Console.create(name: "PS2", brand: "PlayStation", user: sasha, price: "2€")
-# ps2.photo.attach(io: image, filename: "ps2.jpg", content_type: "image/jpg")
-
-# image = URI.open("ps1.jpg")
-# ps1 = Console.create(name: "PS1", brand: "PlayStation", user: rose, price: "1€")
-# ps1.photo.attach(io: image, filename: "ps1.jpg", content_type: "image/jpg")
-
-# image = URI.open("psp.jpg")
-# psp = Console.create(name: "PSP", brand: "PlayStation", user: josé, price: "2€")
-# psp.photo.attach(io: image, filename: "psp.jpg", content_type: "image/jpg")
-
-# image = URI.open("ps_vita.jpg")
-# ps_vita = Console.create(name: "PS vita", brand: "PlayStation", user: mickael, price: "2€")
-# ps_vita.photo.attach(io: image, filename: "ps_vita.jpg", content_type: "image/jpg")
-
-# image = URI.open("xbox_serie_x.jpg")
-# xbox_serie_x = Console.create(name: "Xbox serie x", brand: "Microsoft", user: thomas, price: "5€")
-# xbox_serie_x.photo.attach(io: image, filename: "xbox_serie_x.jpg", content_type: "image/jpg")
-
-# image = URI.open("xbox.png")
-# xbox = Console.create(name: "Xbox", brand: "Microsoft", user: eve, price: "5€")
-# xbox.photo.attach(io: image, filename: "xbox.png", content_type: "image/png")
-
-# image = URI.open("xbox_360.jpg")
-# xbox_360 = Console.create(name: "Xbox 360", brand: "Microsoft", user: adam, price: "5€")
-# xbox_360.photo.attach(io: image, filename: "xbox_360.jpg", content_type: "image/jpg")
-
-# image = URI.open("xbox_one.jpg")
-# xbox_one = Console.create(name: "Xbox one", brand: "Microsoft", user: peter, price: "50€")
-# xbox_one.photo.attach(io: image, filename: "xbox_one.jpg", content_type: "image/jpg")
-
-
-
-# image = URI.open("wii.jpg")
-# wii = Console.create(name: "Wii", brand: "Nintendo", user: justin, price: "50€")
-# wii.photo.attach(io: image, filename: "wii.jpg", content_type: "image/jpg")
-
-# image = URI.open("wii_u.jpg")
-# wii_u = Console.create(name: "Wii U", brand: "Nintendo", user: quentin, price: "50€")
-# wii_u.photo.attach(io: image, filename: "wii_u.jpg", content_type: "image/jpg")
-
-# image = URI.open("gameboy.png")
-# gameboy = Console.create(name: "Gameboy", brand: "Nintendo", user: ruan, price: "50€")
-# gameboy.photo.attach(io: image, filename: "gameboy.png", content_type: "image/png")
-
-# image = URI.open("gameboy_color.jpg")
-# gameboy_color = Console.create(name: "Gameboy Color", brand: "Nintendo", user: ivan, price: "50€")
-# gameboy_color.photo.attach(io: image, filename: "gameboy_color.png", content_type: "image/png")
-
-# image = URI.open("gameboy_advance.jpg")
-# gameboy_advense = Console.create(name: "Gameboy Advense", brand: "Nintendo", user: max, price: "50€")
-# gameboy_advense.photo.attach(io: image, filename: "gameboy_advense.png", content_type: "image/png")
-
-# image = URI.open("gameboy_advance_sp.jpg")
-# gameboy_advense_sp = Console.create(name: "Gameboy Advense Sp", brand: "Nintendo", user: brice, price: "50€")
-# gameboy_advense_sp.photo.attach(io: image, filename: "gameboy_advense_sp.png", content_type: "image/png")
-
-# image = URI.open("gamecube.jpg")
-# gamecube = Console.create(name: "Gamecube", brand: "Nintendo", user: victor, price: "50€")
-# gamecube.photo.attach(io: image, filename: "gamecube.jpg", content_type: "image/jpg")
-
-# image = URI.open("super_nintendo.png")
-# super_nintendo = Console.create(name: "Super Nintendo", brand: "Nintendo", user: jordan, price: "50€")
-# super_nintendo.photo.attach(io: image, filename: "super_nintendo.jpg", content_type: "image/jpg")
-
-# image = URI.open("nintendo_ds.jpg")
-# nintendo_ds = Console.create(name: "Nintendo Ds", brand: "Nintendo", user: laura, price: "50€")
-# nintendo_ds.photo.attach(io: image, filename: "nintendo_ds.jpg", content_type: "image/jpg")
-
-# image = URI.open("nintendo_64.jpg")
-# nintendo_64 = Console.create(name: "Nintendo 64", brand: "Nintendo", user: bruno, price: "50€")
-# nintendo_64.photo.attach(io: image, filename: "nintendo_64.jpg", content_type: "image/jpg")
-
-# image = URI.open("saturn.JPG")
-# saturn = Console.create(name: "Saturn", brand: "SEGA", user: pierre, price: "50€")
-# saturn.photo.attach(io: image, filename: "saturn.jpg", content_type: "image/jpg")
-
-# image = URI.open("sega_mega_drive.jpg")
-# mega_drive = Console.create(name: "Mega drive", brand: "SEGA", user: jessica, price: "50€")
-# mega_drive.photo.attach(io: image, filename: "sega_mega_drive.jpg", content_type: "image/jpg")
-
-# image = URI.open("master_system.jpg")
-# master_system = Console.create(name: "Master system", brand: "SEGA", user: jennifer, price: "50€")
-# master_system.photo.attach(io: image, filename: "master_system.jpg", content_type: "image/jpg")
-
-# image = URI.open("atari_2600.jpg")
-# atari_2600 = Console.create(name: "Atari 2600", brand: "Atari", user: nicolas, price: "50€")
-# atari_2600.photo.attach(io: image, filename: "atari_2600.jpg", content_type: "image/jpg")
-
-# image = URI.open("steam_desk.jpg")
-# steam_desk = Console.create(name: "Steam Desk", brand: "Steam", user: noemie, price: "50€")
-# steam_desk.photo.attach(io: image, filename: "steam_desk.jpg", content_type: "image/jpg")
+console_data.each do |data|
+  image = URI.open(data[:image])
+  console = Console.create!(
+    name: data[:name],
+    brand: data[:brand],
+    user: data[:user],
+    price: data[:price],
+    address: data[:adress]
+  )
+  console.photo.attach(io: image, filename: data[:image], content_type: "#{File.extname(data[:image])}")
+end
 
 puts 'Creating bookings...'
 
-booking1 = Booking.create!(user: thomas, console: ps5, date_begin: Date.today + 3, date_end: Date.today + 4)
-booking2 = Booking.create!(user: thomas, console: ps5, date_begin: Date.today + 5, date_end: Date.today + 10)
-# booking3 = Booking.create!(user: oscar, console: switch, date_begin: Date.today, end_date: Date.today + 1)
-# booking4 = Booking.create!(user: guillaume, console: saturn, date_begin: Date.today + 10, end_date: Date.today + 20)
-# booking5 = Booking.create!(user: thomas, console: wii, date_begin: Date.today + 30, end_date: Date.today + 34)
+booking1 = Booking.create!(user: oscar, console: Console.first, date_begin: Date.today + 3, date_end: Date.today + 4)
+booking2 = Booking.create!(user: oscar, console: Console.first, date_begin: Date.today + 5, date_end: Date.today + 10)
+booking3 = Booking.create!(user: oscar, console: Console.last, date_begin: Date.today, date_end: Date.today + 1)
+booking4 = Booking.create!(user: thomas, console: Console.last, date_begin: Date.today + 10, date_end: Date.today + 20)
+booking5 = Booking.create!(user: thomas, console: Console.last, date_begin: Date.today + 30, date_end: Date.today + 34)
 
 puts 'Creating reviews...'
-review1 = Review.create!(user: thomas, console: ps5, rating: 5, comment: "Super console, je recommande !")
-review2 = Review.create!(user: thomas, console: switch, rating: 4, comment: "Console en bon état, je recommande !")
-# review3 = Review.create!(booking: booking3, rating: 3, content: "Console en bon état, je recommande !")
-# review4 = Review.create!(booking: booking4, rating: 2, content: "Console en bon état, je recommande !")
-# review5 = Review.create!(booking: booking5, rating: 1, content: "Console en bon état, je recommande !")
+review1 = Review.create!(user: oscar, console: Console.first, rating: 5, comment: "Super console, je recommande !")
+review2 = Review.create!(user: thomas, console: Console.last, rating: 4, comment: "Console en bon état, je recommande !")
+review3 = Review.create!(user: oscar, console: Console.first, rating: 5, comment: "Super console, je recommande !")
+review4 = Review.create!(user: thomas, console: Console.last, rating: 4, comment: "Console en bon état, je recommande !")
+review5 = Review.create!(user: thomas, console: Console.last, rating: 4, comment: "Console en bon état, je recommande !")
 
 puts 'Finished!'
