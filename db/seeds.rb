@@ -73,12 +73,14 @@ simon = User.create!(password: "111111", email: "simon@gmail.com")
 pierre = User.create!(password: "111111", email: "pierre@gmail.com")
 puts 'Creating consoles...'
 
-# ps5 = Console.create!(name: "PS5", brand: "PlayStation", user: guillaume, price: "50€", address: "31 chemin de planche au riez, 59290 Wasquehal")
-
+ps5 = Console.create!(name: "PS5", brand: "PlayStation", user: simon, price: "5€", address: "31 chemin de planche au riez, 59290 Wasquehal")
+image = URI.open("https://theglobalcoverage.com/wp-content/uploads/2020/08/ishMfuW.jpeg")
+ps5.photo.attach(io: image, filename: "ps5.jpg", content_type: "image/jpg")
 #xbox_serie_x = Console.create!(name: "Xbox Serie x", brand: "Microsoft", user: thomas, price: "50€", address: "139 boulevard de la liberté, 59000 Lille")
 
-#switch = Console.create!(name: "Switch", brand: "Nintendo", user: oscar, price: "50€", address: "19 rue de la barre, 59000 Lille")
-
+switch = Console.create!(name: "Switch", brand: "Nintendo", user: oscar, price: "5€", address: "19 rue de la barre, 59000 Lille")
+image = URI.open("https://i.computer-bild.de/imgs/1/3/9/0/9/0/7/7/switcholed-6e57ff4748a1a42d.jpg")
+switch.photo.attach(io: image, filename: "nintendo_switch.jpg", content_type: "image/jpg")
 #saturn = Console.create!(name: "Saturn", brand: "SEGA", user: thomas, price: "25€", address: "139 boulevard de la liberté, 59000 Lille")
 
 #wii = Console.create!(name: "Wii", brand: "Nintendo", user: oscar, price: "25€", address: "19 rue de la barre, 59000 Lille")
@@ -87,9 +89,7 @@ puts 'Creating consoles...'
 
 #gameboy = Console.create!(name: "GameBoy", brand: "Nintendo", user: oscar, price: "25€", address: "19 rue de la barre, 59000 Lille")
 
-image = URI.open("https://theglobalcoverage.com/wp-content/uploads/2020/08/ishMfuW.jpeg")
-ps5 = Console.create(name: "PS5", brand: "PlayStation", user: simon, price: "5€")
-ps5.photo.attach(io: image, filename: "ps5.jpg", content_type: "image/jpg")
+
 
 
 # image = URI.open("ps4.jpg")
@@ -133,9 +133,7 @@ ps5.photo.attach(io: image, filename: "ps5.jpg", content_type: "image/jpg")
 # xbox_one = Console.create(name: "Xbox one", brand: "Microsoft", user: peter, price: "50€")
 # xbox_one.photo.attach(io: image, filename: "xbox_one.jpg", content_type: "image/jpg")
 
-image = URI.open("https://i.computer-bild.de/imgs/1/3/9/0/9/0/7/7/switcholed-6e57ff4748a1a42d.jpg")
-switch = Console.create(name: "Switch", brand: "Nintendo", user: oscar, price: "50€")
-switch.photo.attach(io: image, filename: "nintendo_switch.jpg", content_type: "image/jpg")
+
 
 # image = URI.open("wii.jpg")
 # wii = Console.create(name: "Wii", brand: "Nintendo", user: justin, price: "50€")
