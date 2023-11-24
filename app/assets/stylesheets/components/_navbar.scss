@@ -4,6 +4,11 @@
   align-items: center;
   padding: 10px 20px;
   background: white;
+  font-family: 'Oswald', sans-serif;
+}
+
+.navbar-lewagon h2 {
+  font-family: 'Oswald', sans-serif;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -11,5 +16,5 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width:60px;
+  width:100px;
 }
