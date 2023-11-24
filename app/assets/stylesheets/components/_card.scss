@@ -11,6 +11,13 @@
   text-decoration: none;
 }
 
+.img-console{
+  width: 250px;
+  height: 100%;
+  object-fit: contain;
+  margin-right: 16px;
+}
+
 .card-category {
   padding: 0 auto;
   background-size: cover;
@@ -87,18 +94,16 @@
   opacity: 0.7;
 }
 
-.card-trip{
-  margin-bottom: 20px;
-  background-color: white;
-  position: relative;
-}
+
 
 .card-trip img{
-  height: 280px;
-  width: 100%;
-  object-fit: cover;
+//  height: 280px;
+ // width: 100%;
+  //object-fit: cover;
 
 }
+
+
 .card-trip-info{
   display: flex;
   justify-content: space-between;
@@ -128,7 +133,7 @@
 
 h2 {
   margin: 10px 0;
-  text-align: center;
+
 }
 
 .location {
