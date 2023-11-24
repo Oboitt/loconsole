@@ -68,6 +68,8 @@
                 <th>Price</th>
                 <th>Start date</th>
                 <th>End date</th>
+                <th>Status</th>
+
               </tr>
             </thead>
             <tbody>
@@ -79,6 +81,7 @@
                   <td><%= booking.console.price %></td>
                   <td><%= booking.date_begin.to_date.strftime('%Y-%m-%d') %></td>
                   <td><%= booking.date_end.to_date.strftime('%Y-%m-%d') %></td>
+                  <td><%= booking.status %></td>
                 </tr>
               <% end %>
             </tbody>
@@ -105,7 +108,7 @@
               <th>Price</th>
               <th>Start date</th>
               <th>End date</th>
-              <th>Actions</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
@@ -116,9 +119,17 @@
                 <td><%= booking.console.price %></td>
                 <td><%= booking.date_begin.to_date.strftime('%Y-%m-%d') %></td>
                 <td><%= booking.date_end.to_date.strftime('%Y-%m-%d') %></td>
-                <td>
-                  <%= button_to "To validate", validate_booking_path(booking), method: :post, class: "btn btn-success" %>
-                  <%= button_to "Refuse", refuse_booking_path(booking), method: :post, class: "btn btn-danger" %>
+                <td class="d-flex">
+
+                <% if booking.status == "pending" %>
+                    <%= button_to "To validate", accept_booking_path(booking), method: :patch, data: {turbo_method: :patch, turbo_confirm: "Are you sure?"} ,class: "btn btn-success rounded-50 w-3" %>
+                    <%= button_to "Refuse     ", reject_booking_path(booking), method: :patch, class: "btn btn-danger rounded-50 w-3" %>
+                <% else %>
+
+                  <%= booking.status %>
+
+                <% end %>
+
                 </td>
               </tr>
             <% end %>

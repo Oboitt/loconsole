@@ -19,4 +19,11 @@ Rails.application.routes.draw do
   resources :reviews, only: :destroy
   get "dashboard", to: "profiles#dashboard"
   # ressources :bookings, only: [:update]
+
+  resources :bookings do
+    member do
+      patch :accept
+      patch :reject
+    end
+  end
 end
