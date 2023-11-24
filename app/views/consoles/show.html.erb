@@ -1,50 +1,45 @@
-<div class="container ">
- <h1 class="text-center mt-5"><%= @console.name %> - <%= @console.brand %></h1>
+<div class="container">
   <div class="gap d-flex justify-content-center mt-5 ">
     <div class="card-trip bg-white p-5 w-50 d-flex justify-content-between"  style="border-radius: 15px;" >
+
       <div class="d-flex justify-content-center rounded-5">
         <% if @console.photo.attached? %>
-        <div data-controller="clickable">
-          <%= cl_image_tag @console.photo.key,  crop: :fill, class: "img-console clickable", data: { target: "clickable.image" } %>
-        </div>
+          <%= cl_image_tag @console.photo.key,  crop: :fill, class: "img-console" %>
         <% else %>
           <img src="" alt="No image">
         <% end %>
       </div>
       <div>
-
-
-        <p><%= @console.content %><br></p>
-        <p class="text-end"><%= @console.price %>€ / day</p>
+        <h2><%= @console.name %> - <%= @console.brand %></h2>
+        <h2 class=""><%= @console.price %> € </h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
+            Fugiat similique, consectetur aliquam beatae dolorum esse</p>
       </div>
     </div>
-    <div class="bg-white  p-5 align-items-stretch w-50 "  style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 15px; height: 410px;">
-      <h4 class="text-center">Book this console</h4>
-
+    <div class="bg-white  p-5 align-items-stretch w-50 "  style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 15px;">
       <%= render 'bookings/form_booking', booking: @booking, console: @console %>
-
-      <p class="text-center mt-5"><%= @console.user.email.split('@').first.capitalize %> will get back to you very quickly <i class="fa-solid fa-rocket"></i>.</p>
     </div>
   </div>
     <div class="review bg-white p-5 mt-5"  style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 15px;">
-      <h2>Leave a review</h2>
+      <h2>Laissez une évaluation</h2>
       <div class="">
         <%= simple_form_for [@console, @review] do |f| %>
           <%= f.input :comment %>
           <%= f.input :rating, include_blank: false %>
-          <%= f.submit class: "btn btn-light btn-outline-dark rounded-4 mt-3", value: "Submit my review" %>
+          <%= f.submit class: "btn btn-light btn-outline-dark rounded-4 mt-3 mb-5", value: "Valider" %>
         <% end %>
         <%#= render 'reviews/form_review', review: @review, booking: @booking %>
       </div>
-  </div>
-    <div class="mt-3 d-flex flex-column align-items-center">
-      <%= link_to "Back to the consoles", consoles_path, class: "btn btn-secondary rounded-4" %>
-  </div>
+              <% @console.reviews.each do |review| %>
+                      <% review.rating.times do %>
+                        <i class="fas fa-star star-yellow"></i>
+                      <% end %>
+                    <p><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></p>
+                    <p><%= review.comment %></p>
+              <% end %>
+    </div>
+<%= link_to "Back to the consoles", consoles_path, class: "btn btn-secondary rounded-4 mt-3 justify-content-center" %>
 </div>
-
-
-
-
   <%# <div>
     <strong>Details:</strong>
     <%= @console.details %>
