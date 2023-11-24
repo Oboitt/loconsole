@@ -4,7 +4,9 @@
     <div class="card-trip bg-white p-5 w-50 d-flex justify-content-between"  style="border-radius: 15px;" >
       <div class="d-flex justify-content-center rounded-5">
         <% if @console.photo.attached? %>
-          <%= cl_image_tag @console.photo.key,  crop: :fill, class: "img-console" %>
+        <div data-controller="clickable">
+          <%= cl_image_tag @console.photo.key,  crop: :fill, class: "img-console clickable", data: { target: "clickable.image" } %>
+        </div>
         <% else %>
           <img src="" alt="No image">
         <% end %>
