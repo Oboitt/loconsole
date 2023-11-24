@@ -1,65 +1,111 @@
 <div class="container">
   <h1>DASHBOARD</h1>
 
-  <div class="d-flex justify-content-around">
-    <button class="btn btn-light btn-outline-dark rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#console" aria-expanded="false" aria-controls="console">
+
+
+  <div  data-controller="dashboard-display">
+    <div class="d-flex justify-content-around">
+      <button class="dark-btn-console" type="button" data-display="consoles" data-action = "click->dashboard-display#fire" data-dashboard-display-target="btn" >
         My consoles
       </button>
-      <button class="btn btn-light btn-outline-dark rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#bookings" aria-expanded="false" aria-controls="bookings">
+      <button class="dark-btn-console" type="button" data-display="bookings" data-action = "click->dashboard-display#fire" data-dashboard-display-target="btn" >
         My bookings
       </button>
-      <button class="btn btn-light btn-outline-dark rounded-4"  type="button" data-bs-toggle="collapse" data-bs-target="#request" aria-expanded="false" aria-controls="request">
+      <button class="dark-btn-console"  type="button" data-display="requests" data-action = "click->dashboard-display#fire" data-dashboard-display-target="btn" >
         My requests
       </button>
-      <button class="btn btn-light btn-outline-dark rounded-4"  type="button" data-bs-toggle="collapse" data-bs-target="#review" aria-expanded="false" aria-controls="review">
+      <button class="dark-btn-console"  type="button" data-display="reviews" data-action = "click->dashboard-display#fire" data-dashboard-display-target="btn">
         My reviews
       </button>
-  </div>
+      </div>
 
-  <div class="mt-5">
-    <div class="collapse" id="console">
-      <div class="card card-body bg-white rounded-4">
-       <h1>My consoles</h1>
-        <% if @consoles.any? %>
-          <table>
-            <thead>
-              <tr>
-                <th>Brand</th>
-                <th>Consoles</th>
-                <th>Price</th>
-                <th>Date</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-            <%= link_to "New console", new_console_path, class:"btn btn-light btn-outline-dark rounded-4", type:"button" %>
-              <% @consoles.each do |console| %>
+
+
+
+    <div class="mt-5">
+      <div class="" id="consoles" data-dashboard-display-target="infos">
+        <div class="card card-body bg-white rounded-4">
+        <h1>My consoles</h1>
+          <% if @consoles.any? %>
+            <table>
+              <thead>
                 <tr>
-                  <td><%= console.brand %></td>
-                  <td><%= console.name %></td>
-                  <td><%= console.price%>€</td>
-                  <td><%= console.created_at.to_date.strftime('%Y-%m-%d')  %></td>
-                  <td><%= link_to 'Edit consol', edit_console_path(console[:id]), class:"btn btn-light btn-outline-dark rounded-4", type:"button" %>
-                  <%= link_to "Delete", console_path(console),
-                  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-light btn-outline-dark rounded-4", type:"button" %></td>
+                  <th>Brand</th>
+                  <th>Consoles</th>
+                  <th>Price</th>
+                  <th>Date</th>
+                  <th></th>
                 </tr>
-              <% end %>
-            </tbody>
-          </table>
-        <% else %>
-          <p>You don't have any ads yet.</p>
-        <% end %>
+              </thead>
+              <tbody>
+              <%= link_to "New console", new_console_path, class:"btn btn-light btn-outline-dark rounded-4", type:"button" %>
+                <% @consoles.each do |console| %>
+                  <tr>
+                    <td><%= console.brand %></td>
+                    <td><%= console.name %></td>
+                    <td><%= console.price%>€</td>
+                    <td><%= console.created_at.to_date.strftime('%Y-%m-%d')  %></td>
+                    <td><%= link_to 'Edit consol', edit_console_path(console[:id]), class:"btn btn-light btn-outline-dark rounded-4", type:"button" %>
+                    <%= link_to "Delete", console_path(console),
+                    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-light btn-outline-dark rounded-4", type:"button" %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          <% else %>
+            <p>You don't have any ads yet.</p>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
 
 
-  <div class="mt-5">
+    <div class="mt-5">
 
-    <div class="collapse" id="bookings">
-      <div class="card card-body bg-white rounded-4">
-        <h1>My bookings</h1>
-        <% if @bookings.any? %>
+      <div class="d-none" id="bookings" data-dashboard-display-target="infos">
+        <div class="card card-body bg-white rounded-4">
+          <h1>My bookings</h1>
+          <% if @bookings.any? %>
+            <table>
+              <thead>
+                <tr>
+                  <th>Brand</th>
+                  <th>Consoles</th>
+                  <th>Price</th>
+                  <th>Start date</th>
+                  <th>End date</th>
+                  <th>Status</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <% @bookings.each do |booking| %>
+                <% @review = Review.new %>
+                  <tr>
+                    <td><%= booking.console.brand %></td>
+                    <td><%= booking.console.name %></td>
+                    <td><%= booking.console.price %></td>
+                    <td><%= booking.date_begin.to_date.strftime('%Y-%m-%d') %></td>
+                    <td><%= booking.date_end.to_date.strftime('%Y-%m-%d') %></td>
+                    <td><%= booking.status %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          <% else %>
+            <p>You have no location at the moment.</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="mt-5">
+
+      <div class="d-none" id="requests" data-dashboard-display-target="infos">
+        <div class="card card-body bg-white rounded-4">
+      <h1>My requests</h1>
+        <% if @request_bookings.any? %>
           <table>
             <thead>
               <tr>
@@ -69,114 +115,81 @@
                 <th>Start date</th>
                 <th>End date</th>
                 <th>Status</th>
-
               </tr>
             </thead>
             <tbody>
-              <% @bookings.each do |booking| %>
-              <% @review = Review.new %>
+              <% @request_bookings.each do |booking| %>
                 <tr>
                   <td><%= booking.console.brand %></td>
                   <td><%= booking.console.name %></td>
                   <td><%= booking.console.price %></td>
                   <td><%= booking.date_begin.to_date.strftime('%Y-%m-%d') %></td>
                   <td><%= booking.date_end.to_date.strftime('%Y-%m-%d') %></td>
-                  <td><%= booking.status %></td>
+                  <td class="d-flex">
+
+                  <% if booking.status == "pending" %>
+                      <%= button_to "To validate", accept_booking_path(booking), method: :patch, data: {turbo_method: :patch, turbo_confirm: "Are you sure?"} ,class: "btn btn-success rounded-50 w-3" %>
+                      <%= button_to "Refuse     ", reject_booking_path(booking), method: :patch, class: "btn btn-danger rounded-50 w-3" %>
+                  <% else %>
+
+                    <%= booking.status %>
+
+                  <% end %>
+
+                  </td>
                 </tr>
               <% end %>
             </tbody>
           </table>
         <% else %>
-          <p>You have no location at the moment.</p>
+          <p>You have no reservation requests at the moment.</p>
         <% end %>
+        </div>
       </div>
     </div>
-  </div>
 
 
-  <div class="mt-5">
+    <div class="mt-5">
 
-    <div class="collapse" id="request">
-      <div class="card card-body bg-white rounded-4">
-     <h1>My requests</h1>
-      <% if @request_bookings.any? %>
-        <table>
-          <thead>
-            <tr>
-              <th>Brand</th>
-              <th>Consoles</th>
-              <th>Price</th>
-              <th>Start date</th>
-              <th>End date</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @request_bookings.each do |booking| %>
-              <tr>
-                <td><%= booking.console.brand %></td>
-                <td><%= booking.console.name %></td>
-                <td><%= booking.console.price %></td>
-                <td><%= booking.date_begin.to_date.strftime('%Y-%m-%d') %></td>
-                <td><%= booking.date_end.to_date.strftime('%Y-%m-%d') %></td>
-                <td class="d-flex">
-
-                <% if booking.status == "pending" %>
-                    <%= button_to "To validate", accept_booking_path(booking), method: :patch, data: {turbo_method: :patch, turbo_confirm: "Are you sure?"} ,class: "btn btn-success rounded-50 w-3" %>
-                    <%= button_to "Refuse     ", reject_booking_path(booking), method: :patch, class: "btn btn-danger rounded-50 w-3" %>
-                <% else %>
-
-                  <%= booking.status %>
-
-                <% end %>
-
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      <% else %>
-        <p>You have no reservation requests at the moment.</p>
+      <div class="d-none" id="reviews" data-dashboard-display-target="infos">
+        <div class="card card-body bg-white rounded-4">
+          <h1>My reviews</h1>
+      <% @consoles.each do |console| %>
+      <% if console.reviews.any? %>
+            <table>
+              <thead>
+                <tr>
+                  <th>Rating</th>
+                  <th>When review</th>
+                  <th>comment</th>
+                </tr>
+              </thead>
+              <tbody>
+              <% console.reviews.each do |review| %>
+                  <tr>
+                    <td>
+                      <% review.rating.times do %>
+                        <i class="fas fa-star star-yellow"></i>
+                      <% end %>
+                    </td>
+                    <td><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></td>
+                    <td><%= review.comment %></td>
+                  </tr>
+              <% end %>
+              </tbody>
+            </table>
+          <% else %>
+          <p>You have no review at the moment.</p>
+          <% end %>
+        </div>
       <% end %>
       </div>
     </div>
+
+
   </div>
 
 
-  <div class="mt-5">
 
-    <div class="collapse" id="review">
-      <div class="card card-body bg-white rounded-4">
-        <h1>My reviews</h1>
-    <% @consoles.each do |console| %>
-     <% if console.reviews.any? %>
-          <table>
-            <thead>
-              <tr>
-                <th>Rating</th>
-                <th>When review</th>
-                <th>comment</th>
-              </tr>
-            </thead>
-            <tbody>
-            <% console.reviews.each do |review| %>
-                <tr>
-                  <td>
-                    <% review.rating.times do %>
-                      <i class="fas fa-star star-yellow"></i>
-                    <% end %>
-                  </td>
-                  <td><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></td>
-                  <td><%= review.comment %></td>
-                </tr>
-            <% end %>
-            </tbody>
-          </table>
-        <% else %>
-        <p>You have no review at the moment.</p>
-        <% end %>
-      </div>
-    <% end %>
-    </div>
-  </div>
+
 </div>
