@@ -13,9 +13,9 @@ class BookingsController < ApplicationController
     @booking.console = @console
     @booking.user = current_user
     if @booking.save
-      redirect_to console_path(@console)
+      redirect_to dashboard_path, notice: 'The reservation request has been created successfully.'
     else
-      render "consoles/show", status: :unprocessable_entity
+      render 'new'
     end
   end
 
