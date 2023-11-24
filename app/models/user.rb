@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :consoles
   validates :email, presence: true, uniqueness: true
   has_many :bookings_as_owner, through: :consoles, source: :bookings
+  has_many :booking_requests, through: :bookings, source: :booking
 end
