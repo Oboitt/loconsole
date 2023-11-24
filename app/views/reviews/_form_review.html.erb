@@ -1,4 +1,4 @@
-<%= simple_form_for [@console, review] do |f| %>
+<%= simple_form_for [@console, @review] do |f| %>
   <%= f.input :comment %>
   <%= f.input :rating, include_blank: false %>
   <%= f.submit class: "btn btn-ghost", value: "Valider" %>

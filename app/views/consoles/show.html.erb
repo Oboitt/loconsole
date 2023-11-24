@@ -1,8 +1,11 @@
 <div class="container">
-  <div data-controller="toggle" class="gap d-flex justify-content-center mt-5">
-    <div class="card-trip" data-action="click->toggle#fire">
-      <%= image_tag "photo manette.jpg", alt: "Photo-manette" %>
-      <div class="card-trip-infos">
+  <div class="gap d-flex justify-content-center mt-5">
+    <div class="card-trip" >
+      <% if @console.photo.attached? %>
+        <div class="card-trip-infos" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path(@console.photo.key, height: 300, crop: :fill)%>')">
+      <% else %>
+        <div class="card-trip-infos" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('')">
+      <% end %>
         <div>
           <h2><%= @console.name %></h2>
           <h3><%= @console.brand %></h3>
@@ -12,32 +15,21 @@
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
           Fugiat similique, consectetur aliquam beatae dolorum esse</p>
     </div>
-    <div data-toggle-target="togglableElement" class="d-none bg-white p-5">
+    <div class="bg-white p-5">
       <%= render 'bookings/form_booking', booking: @booking, console: @console %>
     </div>
+  </div>
     <div class="review">
-      <h2 data-controller="toggle" data-action="click->toggle#fire">Laissez une évaluation</h2>
-      <div data-toggle-target="togglableElement" class="">
-
-
-
-
-<%= simple_form_for [@console, @review] do |f| %>
-  <%= f.input :comment %>
-  <%= f.input :rating, include_blank: false %>
-  <%= f.submit class: "btn btn-ghost", value: "Valider" %>
-<% end %>
-
-
-
-
-
-
-
+      <h2>Laissez une évaluation</h2>
+      <div class="">
+        <%= simple_form_for [@console, @review] do |f| %>
+          <%= f.input :comment %>
+          <%= f.input :rating, include_blank: false %>
+          <%= f.submit class: "btn btn-ghost", value: "Valider" %>
+        <% end %>
         <%#= render 'reviews/form_review', review: @review, booking: @booking %>
       </div>
     </div>
-  </div>
   <%= link_to "Back to the consoles", consoles_path, class: "btn btn-light btn-outline-dark rounded-4" %>
 </div>
   <%# <div>
